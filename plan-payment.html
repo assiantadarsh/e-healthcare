@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plan Payment</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      background: #f5f7fb;
+    }
+
+    .payment-box {
+      width: 400px;
+      margin: 50px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      background: #eee;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .tab.active {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .payment-section {
+      display: none;
+    }
+
+    .payment-section.active {
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .upi-apps {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .upi-app {
+      flex: 1;
+      padding: 10px;
+      background: #f0f0f0;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .upi-app:hover {
+      background: #ddd;
+    }
+
+    /* ✅ NEW BUTTON STYLE */
+    .success-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .success-btn:hover {
+      background: #43a047;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="payment-box">
+  <h2>Complete Your Plan</h2>
+
+  <p id="planName">Pro Plan</p>
+  <h3 id="planPrice">₹499</h3>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab(event,'card')">Card</div>
+    <div class="tab" onclick="switchTab(event,'upi')">UPI</div>
+    <div class="tab" onclick="switchTab(event,'bank')">Bank</div>
+  </div>
+
+  <!-- CARD -->
+  <div id="card" class="payment-section active">
+    <input type="text" placeholder="Card Number">
+    <input type="text" placeholder="Name on Card">
+    <input type="text" placeholder="Expiry (MM/YY)">
+    <input type="text" placeholder="CVV">
+  </div>
+
+  <!-- UPI -->
+  <div id="upi" class="payment-section">
+    <input type="text" placeholder="Enter UPI ID (example@upi)">
+    
+    <div class="upi-apps">
+      <div class="upi-app">PhonePe</div>
+      <div class="upi-app">GPay</div>
+      <div class="upi-app">Paytm</div>
+    </div>
+  </div>
+
+  <!-- BANK -->
+  <div id="bank" class="payment-section">
+    <select>
+      <option>Select Bank</option>
+      <option>SBI</option>
+      <option>HDFC</option>
+      <option>ICICI</option>
+      <option>Axis</option>
+    </select>
+
+    <input type="text" placeholder="Account Number">
+    <input type="text" placeholder="IFSC Code">
+  </div>
+
+  <button id="payBtn" class="btn btn-primary full-btn">
+    Pay Now
+  </button>
+</div>
+
+<script>
+
+const API_BASE = "http://localhost:5000";
+
+function switchTab(e, type) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".payment-section").forEach(p => p.classList.remove("active"));
+
+  e.target.classList.add("active");
+  document.getElementById(type).classList.add("active");
+}
+
+// ================= REAL PAYMENT =================
+document.getElementById("payBtn").addEventListener("click", async () => {
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const plan = sessionStorage.getItem("selectedPlan");
+
+  if (!user) {
+    alert("Login first ❌");
+    return;
+  }
+
+  if (!plan) {
+    alert("No plan selected ❌");
+    return;
+  }
+
+  const btn = document.getElementById("payBtn");
+  btn.innerText = "Processing...";
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${API_BASE}/api/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: user.email.trim().toLowerCase(),
+        planName: plan
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Payment failed");
+    }
+
+    // ✅ SUCCESS UI
+    document.body.innerHTML = `
+      <div style="text-align:center;margin-top:100px">
+        <h1>✅ Payment Successful</h1>
+        <p>Your plan is activated</p>
+        <a href="index.html" class="success-btn">Go to Home</a>
+      </div>
+    `;
+
+  } catch (err) {
+    alert(err.message);
+    btn.innerText = "Pay Now";
+    btn.disabled = false;
+  }
+});
+
+</script>
+
+</body>
+</html>\

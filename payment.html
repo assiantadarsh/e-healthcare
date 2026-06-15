@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Payment | E-Healthcare</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  
+</head>
+
+<body class="checkout-page">
+
+<header class="checkout-topbar">
+  <div class="container checkout-topbar-inner">
+    <div class="topbar-brand">
+      <div class="logo-badge">E</div>
+      <div>
+        <h1>E-Healthcare</h1>
+        <p>Secure Appointment Payment</p>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn btn-outline">← Back to Home</a>
+  </div>
+</header>
+
+<main class="checkout-main">
+  <div class="container checkout-grid">
+
+    <!-- SUMMARY -->
+    <section class="checkout-card checkout-summary">
+      <span class="subtitle">Booking Summary</span>
+      <h2>Confirm your appointment</h2>
+
+      <div class="summary-box">
+        <p><strong>Doctor:</strong> <span id="doctorName">—</span></p>
+        <p><strong>Patient:</strong> <span id="patientNameView">—</span></p>
+        <p><strong>Date:</strong> <span id="dateView">—</span></p>
+        <p><strong>Time:</strong> <span id="timeView">—</span></p>
+        <p><strong>Amount:</strong> ₹500</p>
+      </div>
+
+      <div class="secure-note">
+        🔒 Secure checkout • Demo payment flow • No alerts
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="checkout-card checkout-form-card">
+      <span class="subtitle">Payment Gateway</span>
+      <h2>Choose payment method</h2>
+
+      <div class="method-tabs">
+        <button class="method-btn active" data-method="upi" type="button">UPI</button>
+        <button class="method-btn" data-method="card" type="button">Card</button>
+        <button class="method-btn" data-method="bank" type="button">Net Banking</button>
+      </div>
+
+      <form id="paymentForm" class="checkout-form">
+
+        <div class="field-grid">
+          <input type="text" id="patientName" placeholder="Patient Name" required />
+          <input type="tel" id="patientPhone" placeholder="Phone Number" required />
+        </div>
+
+        <!-- DATE -->
+        <div class="field-grid">
+          <input type="date" id="appointmentDate" required />
+        </div>
+
+        <input type="time" id="appointmentTime" required />
+
+        <textarea id="problem" rows="4" placeholder="Brief problem description"></textarea>
+
+        <!-- UPI -->
+        <div class="method-panel" id="upiPanel">
+          <h3>UPI Payment</h3>
+          <input type="text" id="upiId" placeholder="Enter UPI ID (demo@example)" />
+          <div class="qr-box">
+            <div class="qr-placeholder">QR</div>
+            <p>Scan to pay ₹500</p>
+          </div>
+        </div>
+
+        <!-- CARD -->
+        <div class="method-panel hidden" id="cardPanel">
+          <h3>Card Payment</h3>
+          <input type="text" id="cardNumber" placeholder="Card Number" />
+          <div class="field-grid">
+            <input type="text" id="cardExpiry" placeholder="MM/YY" />
+            <input type="text" id="cardCvv" placeholder="CVV" />
+          </div>
+          <input type="text" id="cardName" placeholder="Name on Card" />
+        </div>
+
+        <!-- BANK -->
+        <div class="method-panel hidden" id="bankPanel">
+          <h3>Net Banking / Bank Transfer</h3>
+          <div class="bank-box">
+            <p><strong>Account Name:</strong> E-Healthcare Demo</p>
+            <p><strong>UPI / Ref:</strong> EHCARE500</p>
+            <p><strong>IFSC:</strong> DEMO0001234</p>
+            <p><strong>Bank:</strong> Demo Bank</p>
+          </div>
+          <input type="text" id="txnRef" placeholder="Enter transaction/reference ID" />
+        </div>
+
+        <!-- hidden important -->
+        <input type="hidden" id="doctorId" />
+        <input type="hidden" id="doctorNameHidden" />
+
+        <button id="payConfirmBtn" type="submit" class="btn btn-primary full-btn">
+          Pay ₹500 & Confirm
+        </button>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+<!-- LOADER -->
+<div id="paymentLoader" class="modal">
+  <div class="modal-content" style="text-align:center">
+    <h2>Processing Payment...</h2>
+    <p>Please wait ⏳</p>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/payment.js"></script>
+
+</body>
+</html>

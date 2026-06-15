@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Emergency Support | E-Healthcare</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" 
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="emergency-page">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="emergency-topbar">
+    <div class="container emergency-nav">
+
+      <div class="topbar-brand">
+        <div class="logo-badge">E</div>
+        <div>
+          <h1>E-Healthcare</h1>
+          <p>Emergency Support Center</p>
+        </div>
+      </div>
+
+      <a href="index.html" class="btn btn-outline">← Back to Home</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <main class="emergency-main">
+
+    <section class="emergency-hero">
+      <div class="container">
+        <span class="emergency-badge">24/7 Emergency Assistance</span>
+
+        <h2>Get quick medical help during urgent situations</h2>
+
+        <p>
+          Use our emergency assistant for basic first-response guidance.
+          For serious conditions, contact ambulance or emergency services immediately.
+        </p>
+
+        <div class="hero-emergency-actions">
+          <a href="tel:108" class="emergency-call-btn">🚑 Call Ambulance 108</a>
+          <a href="tel:112" class="emergency-call-btn secondary">📞 Call Emergency 112</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <section class="container emergency-grid">
+
+      <!-- LEFT SIDE -->
+      <aside class="emergency-left">
+
+        <div class="emergency-card">
+          <h3>Emergency Contacts</h3>
+          <p class="card-subtitle">Tap to call instantly</p>
+
+          <div class="contact-row">
+            <div>
+              <strong>🚑 Ambulance</strong>
+              <p>Medical emergency support</p>
+            </div>
+            <a href="tel:108">108</a>
+          </div>
+
+          <div class="contact-row">
+            <div>
+              <strong>📞 National Emergency</strong>
+              <p>All emergency support</p>
+            </div>
+            <a href="tel:112">112</a>
+          </div>
+
+          <div class="contact-row">
+            <div>
+              <strong>🏥 Hospital Helpdesk</strong>
+              <p>Local hospital support</p>
+            </div>
+            <a href="tel:9999999999">9999999999</a>
+          </div>
+        </div>
+
+        <div class="emergency-card warning-card">
+          <h3>When to call immediately?</h3>
+
+          <ul>
+            <li>Severe chest pain</li>
+            <li>Breathing difficulty</li>
+            <li>Heavy bleeding</li>
+            <li>Unconsciousness</li>
+            <li>Serious accident or injury</li>
+          </ul>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT SIDE CHATBOT -->
+      <section class="emergency-card chatbot-card">
+
+        <div class="chatbot-header">
+          <div>
+            <h3>AI Emergency Assistant</h3>
+            <p>Basic guidance before professional help arrives</p>
+          </div>
+
+          <span class="online-status">
+            <span class="online-dot-small"></span>
+            Online
+          </span>
+        </div>
+
+        <div id="chatBox" class="chat-box">
+          <div class="bot-msg">
+            Hello, I am your emergency assistant. Please describe what happened.
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <button type="button" onclick="quickMessage('chest pain')">Chest Pain</button>
+          <button type="button" onclick="quickMessage('breathing problem')">Breathing Issue</button>
+          <button type="button" onclick="quickMessage('accident bleeding')">Accident</button>
+          <button type="button" onclick="quickMessage('high fever')">High Fever</button>
+          <button type="button" onclick="quickMessage('unconscious patient')">Unconscious</button>
+        </div>
+
+        <div class="chat-input-area">
+          <input 
+            type="text" 
+            id="userInput" 
+            placeholder="Type patient problem here..." 
+          />
+          <button class="btn btn-primary" type="button" onclick="sendMessage()">
+            Send
+          </button>
+        </div>
+
+        <p class="medical-note">
+          Note: This assistant gives basic emergency guidance only. It is not a replacement for professional medical care.
+        </p>
+
+      </section>
+
+    </section>
+
+  </main>
+
+  <script src="js/emergency.js"></script>
+</body>
+</html>

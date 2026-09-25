@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Healthcare | Online Consultation & Medical Subscription</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-wrap">
+      <div class="logo">
+        <div class="logo-badge">E</div>
+        <div>
+          <h1>E-Healthcare</h1>
+          <p>Online Consultation & Subscription</p>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#plans">Plans</a>
+         <a href="appointments.html" id="myAppointmentsLink">My Appointments</a>
+        <a href="#how">How it Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- <button class="btn btn-outline" id="loginBtn" type="button">Login</button> -->
+       <div class="profile-box">
+    <button class="btn btn-outline" id="loginBtn">Login</button>
+
+    <div class="dropdown hidden" id="profileDropdown">
+        <p id="userName"></p>
+        <hr>
+        <button class="drop-item">⚙️ Settings</button>
+        <button class="drop-item">🌐 Language</button>
+        <button class="drop-item">🔒 Change Password</button>
+        <button class="drop-item logout-btn">🚪 Logout</button>
+    </div>
+</div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="pill">24/7 Online Consultation</span>
+          <h2>Find trusted doctors near you and book appointments in minutes.</h2>
+          <p>
+            E-Healthcare connects patients with nearby doctors for fast consultations,
+            easy booking, and affordable medical subscription plans.
+          </p>
+
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search doctor, specialty, or city..." />
+            <button class="btn btn-primary" id="searchBtn" type="button">Search</button>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <h3>500+</h3>
+              <span>Verified Doctors</span>
+            </div>
+            <div>
+              <h3>50k+</h3>
+              <span>Happy Patients</span>
+            </div>
+            <div>
+              <h3>24/7</h3>
+              <span>Support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-top">
+            <span class="dot green"></span>
+            <span class="dot yellow"></span>
+            <span class="dot red"></span>
+          </div>
+          <div class="schedule-box">
+            <h3>Today's Top Doctors</h3>
+            <div class="mini-doctor">
+              <strong>Dr. Ananya Sharma</strong>
+              <p>Cardiologist • 4.9 ★</p>
+            </div>
+            <div class="mini-doctor">
+              <strong>Dr. Raj Malhotra</strong>
+              <p>General Physician • 4.8 ★</p>
+            </div>
+            <div class="mini-doctor">
+              <strong>Dr. Meera Jain</strong>
+              <p>Dermatologist • 4.9 ★</p>
+            </div>
+            <button type="button" class="btn btn-primary full-btn">
+                Book Now
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section doctors-section" id="doctors">
+      <div class="container">
+        <div class="section-heading">
+          <span class="subtitle">Nearby Doctors</span>
+          <h2>Choose a doctor and book your consultation</h2>
+          <p>Filter doctors by specialty and find the best match for your need.</p>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="Cardiologist" type="button">Cardiologist</button>
+          <button class="filter-btn" data-filter="Physician" type="button">Physician</button>
+          <button class="filter-btn" data-filter="Dermatologist" type="button">Dermatologist</button>
+          <button class="filter-btn" data-filter="Pediatrician" type="button">Pediatrician</button>
+        </div>
+
+        <div class="doctor-grid" id="doctorGrid">
+          <!-- Doctors will come from backend -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section plans-section" id="plans">
+      <div class="container">
+        <div class="section-heading">
+          <span class="subtitle">Medical Subscription</span>
+          <h2>Affordable plans for regular care</h2>
+          <p>Pick a plan for online consultations, family support, and priority booking.</p>
+        </div>
+
+        <div class="plan-grid">
+          <div class="plan-card">
+            <h3>Basic</h3>
+            <p class="price">₹199 <span>/ month</span></p>
+            <ul>
+              <li>2 online consultations</li>
+              <li>Prescription access</li>
+              <li>Email support</li>
+            </ul>
+            <button class="btn btn-outline plan-btn" type="button">Choose Plan</button>
+          </div>
+
+          <div class="plan-card featured">
+            <div class="badge">Popular</div>
+            <h3>Pro</h3>
+            <p class="price">₹499 <span>/ month</span></p>
+            <ul>
+              <li>Unlimited chat support</li>
+              <li>4 video consultations</li>
+              <li>Priority booking</li>
+            </ul>
+            <button class="btn btn-primary plan-btn" type="button">Choose Plan</button>
+          </div>
+
+          <div class="plan-card">
+            <h3>Family</h3>
+            <p class="price">₹899 <span>/ month</span></p>
+            <ul>
+              <li>For up to 4 members</li>
+              <li>8 consultations</li>
+              <li>Family health dashboard</li>
+            </ul>
+            <button class="btn btn-outline plan-btn" type="button">Choose Plan</button>
+             
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how-section" id="how">
+      <div class="container">
+        <div class="section-heading">
+          <span class="subtitle">How it works</span>
+          <h2>Simple process from search to booking</h2>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span>1</span>
+            <h3>Search Doctor</h3>
+            <p>Search by specialty, location, or doctor name.</p>
+          </div>
+          <div class="step">
+            <span>2</span>
+            <h3>Select Time</h3>
+            <p>Choose the available slot that fits your schedule.</p>
+          </div>
+          <div class="step">
+            <span>3</span>
+            <h3>Confirm Appointment</h3>
+            <p>Confirm booking and receive instant details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-box">
+        <div>
+          <span class="subtitle">Need help?</span>
+          <h2>Contact support anytime</h2>
+          <p>We help patients with booking, subscription, and consultation support.</p>
+        </div>
+        <a href="emergency.html" class="btn btn-primary">Contact Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 E-Healthcare. All rights reserved.</p>
+      <p>Built for online consultation and medical subscriptions.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <div class="modal" id="bookingModal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal" type="button">&times;</button>
+      <h2>Book Appointment</h2>
+      <form id="bookingForm">
+      <input type="text" id="patientName" placeholder="Your Name" required />
+      <input type="tel" id="patientPhone" placeholder="Phone Number" required />
+
+      <input type="date" id="appointmentDate" required />
+
+      <div id="slotsContainer"></div>
+
+      <input type="hidden" id="selectedSlot" />
+
+      <textarea id="problem" rows="4" placeholder="Brief problem description"></textarea>
+
+      <button type="submit" class="btn btn-primary full-btn">Confirm Booking</button>
+    </form>
+    </div>
+  </div>
+  <div class="modal" id="loginModal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeLogin()">×</button>
+
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="loginUser()" class="btn btn-primary full-btn">Login</button>
+
+    <hr>
+
+    <h3>Register</h3>
+    <input type="text" id="regName" placeholder="Name" />
+    <input type="email" id="regEmail" placeholder="Email" />
+    <input type="password" id="regPassword" placeholder="Password" />
+    <button onclick="registerUser()" class="btn btn-secondary full-btn">Register</button>
+  </div>
+</div>
+<div id="paymentLoader" class="modal">
+  <div class="modal-content" style="text-align:center">
+    <h2>Processing Payment...</h2>
+    <p>Please wait ⏳</p>
+  </div>
+</div>
+  <script src="js/script.js"></script>
+  <script src="https://meet.jit.si/external_api.js"></script>
+</body>
+</html>
+
+                                                

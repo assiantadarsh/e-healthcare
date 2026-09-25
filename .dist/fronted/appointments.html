@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Appointments | E-Healthcare</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="appointments-page">
+
+<header class="appointments-topbar">
+  <div class="container topbar-wrap">
+
+    <div class="topbar-brand">
+      <div class="logo-badge">E</div>
+      <div>
+        <h1>E-Healthcare</h1>
+        <p>My Appointments</p>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <a href="index.html" class="btn btn-outline">Back to Home</a>
+      <button id="logoutBtn" class="btn btn-secondary" type="button">Logout</button>
+    </div>
+
+  </div>
+</header>
+
+<main class="appointments-main">
+
+  <!-- HERO -->
+  <section class="appointments-hero">
+    <div class="container">
+
+      <div class="hero-panel">
+        <span class="pill">Appointment Dashboard</span>
+        <h2>Track your bookings in one place</h2>
+        <p id="userInfoText">Login to view your appointment history.</p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <span>Total Appointments</span>
+          <strong id="totalAppointments">0</strong>
+        </div>
+
+        <div class="summary-card">
+          <span>Upcoming</span>
+          <strong id="upcomingAppointments">0</strong>
+        </div>
+
+        <div class="summary-card">
+          <span>Account</span>
+          <strong id="accountName">Guest</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIST -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-heading">
+        <span class="subtitle">Your Bookings</span>
+        <h2>Appointment details</h2>
+      </div>
+
+      <!-- ✅ CLEAN container (no static content) -->
+      <div id="appointmentsList" class="appointments-grid"></div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/appointments.js"></script>
+
+</body>
+</html>

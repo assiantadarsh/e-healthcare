@@ -24,8 +24,6 @@
 require("dotenv").config();
 
 const mysql = require("mysql2");
-const fs = require("fs");
-const path = require("path");
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -34,11 +32,11 @@ const db = mysql.createConnection({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
 
-    ssl: {
-        ca: fs.readFileSync(
-            path.join(__dirname, "ca.pem")
-        )
-    }
+    ssl: process.env.DB_SSL_CA
+        ? {
+              ca: process.env.DB_SSL_CA
+          }
+        : undefined
 });
 
 db.connect((err) => {

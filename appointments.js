@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://e-healthcare-1.onrender.com";
 
 const appointmentsList = document.getElementById("appointmentsList");
 const totalAppointmentsEl = document.getElementById("totalAppointments");

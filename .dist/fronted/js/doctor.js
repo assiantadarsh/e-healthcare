@@ -33,7 +33,7 @@ async function loadDoctor() {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/doctors");
+    const res = await fetch("https://e-healthcare-1.onrender.com/api/doctors");
     const data = await res.json();
 
     const doc = data.find(d => d.id == id);

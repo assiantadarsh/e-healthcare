@@ -3,7 +3,7 @@ const container = document.getElementById("adminAppointments");
 // ================= LOAD ALL APPOINTMENTS =================
 async function loadAppointments() {
   try {
-    const res = await fetch("http://localhost:5000/api/admin/appointments");
+    const res = await fetch("https://e-healthcare-1.onrender.com/api/admin/appointments");
     const data = await res.json();
 
     container.innerHTML = "";
@@ -32,7 +32,7 @@ async function deleteAppointment(id) {
 
   if (!confirm("Delete this appointment?")) return;
 
-  await fetch(`http://localhost:5000/api/admin/appointments/${id}`, {
+  await fetch(`https://e-healthcare-1.onrender.com/api/admin/appointments/${id}`, {
     method: "DELETE"
   });
 
